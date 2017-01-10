@@ -5,6 +5,8 @@ case "$1" in
 			python umnyy-car.py >logs/umnyy-car.log 2>&1 & echo $! >logs/umnyy-car.pid
 			python humidity-temperature.py >logs/humidity-temperature.log 2>&1 & echo $! >logs/humidity-temperature.pid
 			python distance.py >logs/distance.log 2>&1 & echo $! >logs/distance.pid
+			
+			sudo motion
 		;;
 	stop)
 			pid=$(cat logs/umnyy-car.pid)
@@ -21,6 +23,8 @@ case "$1" in
 			echo Close distance sensor $pid
 			kill $pid
 			echo -1 > logs/distance.pid
+			
+			sudo killall motion
 		;;
 	*)
 		echo $"Usage: $0 {start|stop}"

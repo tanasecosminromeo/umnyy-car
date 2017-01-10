@@ -4,14 +4,14 @@ bus = smbus.SMBus(1)
 address = 0x04
 
 #bus.write_byte(address, 245);
-# time.sleep(.5);
+#time.sleep(.5);
 # bus.write_byte(address, 247);
 # time.sleep(.5);
 # bus.write_byte(address, 241);
 # time.sleep(.5);
 # bus.write_byte(address, 247);
 # time.sleep(.5);
-sleep(10);
+#sleep(10);
 
 while True:
 	for xx in [0, 96, 200]:

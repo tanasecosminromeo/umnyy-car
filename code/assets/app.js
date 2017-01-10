@@ -19,7 +19,9 @@ function output(str){ term.output(str); }
     r("min", 6*d.getMinutes())
     r("hour", 30*(d.getHours()%12) + d.getMinutes()/2)
   }, 1000);
-
+	
+var socket;
+	
 if(!("WebSocket" in window)){
 	$('#chatLog, input, button, #examples').fadeOut("fast");	
 	$('<p>Oh no, you need a browser that supports WebSockets. How about <a href="http://www.google.com/chrome">Google Chrome</a>?</p>').appendTo('#container');		
@@ -27,8 +29,8 @@ if(!("WebSocket" in window)){
 	connect();
 }
 
+$("div.videomotion").append('<img src="http://'+document.location.hostname+':8081" />');
 
-var socket;
 function connect(){
 	
 	try {
@@ -36,15 +38,15 @@ function connect(){
 		
 		socket.onopen = function(){
 			//output('<p class="event">Socket Status: '+socket.readyState+' (open)');	
-		}
+		};
 		
 		socket.onmessage = function(msg){
 			//output('<p class="message">Received: '+msg.data);					
-		}
+		};
 		
 		socket.onclose = function(){
 			//output('<p class="event">Socket Status: '+socket.readyState+' (Closed)');
-		}			
+		}	;		
 		
 	} catch(exception){
 		output('<p>Error'+exception);

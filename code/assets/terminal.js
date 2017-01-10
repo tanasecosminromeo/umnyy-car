@@ -162,7 +162,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 				case 'control':
 					output("Car control "+(nowControl?"disabled":"enabled"));
 					nowControl = !nowControl;
-					socket = new WebSocket("ws://192.168.1.111:8000");
+					socket = new WebSocket("ws://"+document.location.hostname+":8000");
 					$(".prompt").toggleClass("control");
 					break;
         case 'help':
