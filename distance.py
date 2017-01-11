@@ -13,14 +13,17 @@ while True:
 	try:
 		byte = bus.read_byte(address)
 		if byte!=0:
-			if i<10:
-				i = i + 1
+			i = i + 1
+			if i==5:
 				if byte!=cm:
 					cm = byte
 					print "distance ", cm
 					f = open('code/distance.txt', 'w')
 					f.write(str(cm))
 					f.close()
+			if i==10:
+				i = 0
+	
 			if ll<8 and byte<8:
 				bus.write_byte(control, 247)
 				time.sleep(.2)
